@@ -46,7 +46,6 @@ with socket(AF_INET, SOCK_STREAM) as sock:
         k = "int_key"
         key = Key(len(k), k)
         value = 123456
-        # "<HI%dsHI%ds"
         data = pack(
             "<HI%dsHq" % (key.length,), 
             SET, 

@@ -7,19 +7,6 @@ import struct
 SET = "set"
 GET = "get"
 
-"""Key value client
-"""
-
-"""
-SET PROTOCOL
-
-TIMESTAMP
-KEY_LENGTH
-KEY
-VALUE_LENGTH
-VALUE
-"""
-
 # Value type
 INT = 0
 STRING = 1
