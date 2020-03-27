@@ -1,21 +1,19 @@
 # Key Value Store
 
+  
+
 A key value store for Distributed Class at BradfieldCS
 
-# TODO 
-- CLI
-    - [x] Interactive CLI
+  
+### Features
+- Support for floating point, integer and string types
+- Interactive CLI
+ 
+### To Do
+- Replication
+- Partitioning
+- Concurrency
 
-**Replication**
+## Resources
 
-**Partitioning**
-
-**Data Types**
-    - [x] Support setting float, int, string
-    - [ ] *Bonus* support list and sets
-
-# Resources
 https://github.com/antirez/redis/
-
-
-# kv_store
