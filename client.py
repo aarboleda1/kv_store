@@ -3,12 +3,8 @@ import sys
 from struct import pack
 from collections import namedtuple
 HOST, PORT = "localhost", 8080
-data = " ".join(sys.argv[1:])
-args = sys.argv[2:]
 
 # https://docs.python.org/3/library/struct.html
-format_str = "hl"
-# operation, key, Optional[value]
 
 Key = namedtuple("Key", ["length", "string_val"])
 
@@ -25,9 +21,7 @@ with socket(AF_INET, SOCK_STREAM) as sock:
     # Connect to server and send data
     sock.connect((HOST, PORT))
     k, v = "float_val", 24.111
-    
     key = Key(len(k), k)
-
     data = pack(
         "<HI%dsHf" % (key.length,), 
         SET, 
@@ -36,7 +30,6 @@ with socket(AF_INET, SOCK_STREAM) as sock:
         FLOAT,
         v
     )
-
     sock.sendall(data)
 
     # Receive data from the server and shut down
