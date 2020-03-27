@@ -33,7 +33,6 @@ with socket(AF_INET, SOCK_STREAM) as sock:
         k = "string_key"
         value = "value_string"
         key = Key(len(k), k)
-        # "<HI%dsHI%ds"
         data = pack(
             "<HI%dsHI%ds" % (key.length, len(value)), 
             SET, 
@@ -61,5 +60,5 @@ with socket(AF_INET, SOCK_STREAM) as sock:
     # Receive data from the server and shut down
     received = str(sock.recv(1024), "utf-8")
 
-# print("Sent:     {}".format(data))
-# print("Received: {}".format(received))
+print("Sent:     {}".format(data))
+print("Received: {}".format(received))

@@ -1,13 +1,16 @@
-# CLI
+# Key Value Store
 
-`python3 key_value_store.py`
+A key value store for Distributed Class at BradfieldCS
 
 # TODO 
-- different data types
-    
-    - Support setting float, int, string
-    - alternative operations
-    - Variable length data types
+- CLI
+    - [ x ] Interactive CLI
+**Replication**
+**Partitioning**
+**Data Types**
+    - [ x ] Support setting float, int, string
+    - [ ] *Bonus* support list and sets
+
 # Resources
 https://github.com/antirez/redis/
 
