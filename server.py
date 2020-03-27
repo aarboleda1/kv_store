@@ -5,7 +5,6 @@ from socketserver import TCPServer, BaseRequestHandler
 from key_value_store import set, get
 from struct import unpack, calcsize
 from collections import namedtuple
-from enum import Enum
 FORMAT_STRING = "hsl"
 
 Key = namedtuple("Key", ["key_length", "key_value"])
