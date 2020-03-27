@@ -13,13 +13,6 @@ INT = 0
 STRING = 1
 FLOAT = 2
 
-# https://docs.python.org/3/library/struct.html
-value_to_fmt_string = {
-    INT: "q",
-    STRING: "", # TODO aarboleda
-    FLOAT: "f",
-}
-
 class KeyValueRequestHandler(BaseRequestHandler):
     def handle(self) -> None:
         data = self.request.recv(1024)
@@ -40,11 +33,24 @@ class KeyValueRequestHandler(BaseRequestHandler):
         # Get value type
         value_type, = unpack("H", data[offset:offset + 2])
         offset += 2
-        value_type_fmt_string = value_to_fmt_string[value_type]
-        value, = unpack(
-            value_type_fmt_string, 
-            data[offset:offset + calcsize(value_type_fmt_string)]
-        )
+
+        # Get the value 
+        if value_type == STRING:
+            value_length, = unpack("I", data[offset: offset + 4])
+            offset += 4
+            _bytes, = unpack("%ds" % value_length, data[offset: offset + value_length])
+            value = _bytes.decode("utf-8")
+            print(value, 'IS THE VALUE')
+        else: 
+            if value_type == INT:
+                format_string = "q"
+            else:
+                format_string = "f"
+            value, = unpack(
+                format_string, 
+                data[offset:offset + calcsize(format_string)]
+            )
+
         set(key, value)
         self.request.sendall("OK".encode("utf8"))
 
